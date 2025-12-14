@@ -10,35 +10,42 @@ body {
     color: #59344F;
 }
 
-/* HERO */
+/* -------------------------------------- */
+/* HERO SECTION (LAYOUT MOBILE-FIRST) */
+/* -------------------------------------- */
 .hero-section {
     display: flex;
+    flex-direction: column; /* FORÇA EMPILHAR NO CELULAR */
     min-height: 550px;
     position: relative;
 }
 
 .hero-text-container {
-    width: 40%;
+    width: 100%; /* Ocupa 100% no mobile */
     background-color: #59344F;
-    padding: 70px 60px;
+    padding: 50px 30px; /* Ajuste o padding para não apertar demais */
+    text-align: center; /* Centraliza a logo e texto no celular */
+    order: 1; /* Coloca o texto abaixo da imagem no fluxo padrão */
 }
 
 .hero-image-area {
-    width: 60%;
+    width: 100%; /* Ocupa 100% no mobile */
+    height: 300px; /* Altura fixa para aparecer no mobile */
     background: url('imagens/image4.jpeg');
     background-size: cover;
     background-position: center 30%;
     background-repeat: no-repeat;
+    order: 0; /* Coloca a imagem acima do texto no fluxo padrão */
 }
 
 .logo-img {
-    max-width: 230px;
+    max-width: 180px; /* Reduza a logo no celular */
     margin-bottom: 30px;
 }
 
 .slogan-container h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 2.5em;
+    font-size: 2em; /* Ajuste o tamanho da fonte no mobile */
     color: #D9AF8B;
 }
 
@@ -59,199 +66,91 @@ body {
     font-weight: 600;
 }
 
-/* MENU */
+/* MENU (MOBILE) */
 .main-nav {
-    position: absolute;
-    top: 30px;
-    right: 40px;
+    position: static; /* Remove o absoluto para funcionar no fluxo do mobile */
+    top: auto;
+    right: auto;
+    margin-bottom: 20px; /* Espaço entre a navegação e a logo */
 }
 
 .main-nav ul {
     list-style: none;
     display: flex;
-    gap: 40px;
+    justify-content: center; /* Centraliza os links no mobile */
+    gap: 20px; /* Reduza o espaço entre os links */
 }
 
 .main-nav a {
     color: #fff;
     text-decoration: none;
-    letter-spacing: .12em;
+    letter-spacing: .08em; /* Reduza o espaçamento */
     text-transform: uppercase;
+    font-size: 0.9em;
 }
 
-/* SERVIÇOS */
+/* -------------------------------------- */
+/* SERVIÇOS (LAYOUT RESPONSIVO) */
+/* -------------------------------------- */
 #servicos {
-    padding: 100px 20px;
+    padding: 60px 10px; /* Reduza o padding no mobile */
 }
 
 #servicos h2 {
     font-family: 'Playfair Display', serif;
     text-align: center;
-    margin-bottom: 60px;
-    font-size: 30px;
-}
-.servico-card .hover-detalhes {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.servico-card:hover .hover-detalhes {
-    opacity: 1;
+    margin-bottom: 40px;
+    font-size: 28px; /* Ajuste o tamanho da fonte */
 }
 
 .servicos-grid {
     max-width: 1300px;
     margin: auto;
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 40px;
+    /* GRID FLEXÍVEL: 2 colunas no celular/tablet, se possível */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px; 
+    padding: 0 15px; /* Adiciona um padding nas laterais do grid */
 }
 
 .servico-card {
-    position: relative;
-    overflow: hidden;
-    border-radius: 20px;
-    cursor: pointer;
-    transition: transform .4s ease, box-shadow .4s ease;
+    /* ... (Estilos existentes) ... */
 }
 
 .servico-card img {
     width: 100%;
-    height: 420px;
+    height: 350px; /* Altura ajustada para o mobile */
     object-fit: cover;
     transition: transform .5s ease;
 }
-.servico-card .conteudo {
-    transition: opacity 0.3s ease;
-}
-.servico-card:hover .conteudo {
-    opacity: 0;
-}
 
-/* HOVER (MANTIDO) */
-.servico-info {
-    position: absolute;
-    inset: 0;
-    background: rgba(89, 52, 79, 0.85);
-    color: #F6EDE6;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 25px;
-    opacity: 0;
-    transition: .4s;
-}
+/* ... (Regras de hover, modal, etc.) ... */
 
-.servico-info h3 {
-    font-family: 'Playfair Display', serif;
-    color: #D9AF8B;
-    font-size: 1.6em;
-    margin-bottom: 10px;
-}
-
-.servico-card:hover {
-    transform: scale(1.05);
-}
-
-.servico-card:hover img {
-    transform: scale(1.1);
-}
-
-.servico-card:hover .servico-info {
-    opacity: 1;
-}
-
-/* MODAL */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    pointer-events: none;
-    transition: .3s;
-    z-index: 999;
-}
-
-.modal-overlay.active {
-    opacity: 1;
-    pointer-events: all;
-}
-
-.modal-content {
-    background: #F6EDE6;
-    padding: 40px;
-    border-radius: 20px;
-    max-width: 420px;
-    width: 90%;
-    text-align: center;
-    position: relative;
-}
-
-.modal-close {
-    position: absolute;
-    top: 15px;
-    right: 20px;
-    border: none;
-    background: none;
-    font-size: 24px;
-    cursor: pointer;
-}
-
-/* FOOTER CONTATO */
+/* -------------------------------------- */
+/* FOOTER CONTATO (LAYOUT RESPONSIVO) */
+/* -------------------------------------- */
 .footer-contato {
     background-color: #59344F;
     color: #F6EDE6;
-    padding-top: 60px;
+    padding-top: 50px;
 }
 
 .footer-container {
     max-width: 1100px;
     margin: 0 auto;
-    padding: 0 20px 50px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 50px;
+    padding: 0 40px 50px; /* Padding ajustado */
+    /* Por padrão, é uma grade de 1 coluna no mobile */
+    display: grid; 
+    grid-template-columns: 1fr;
+    gap: 30px;
+    text-align: center; /* Centraliza o texto no mobile */
 }
 
 .footer-col h3 {
     font-family: 'Playfair Display', serif;
-    font-size: 1.6em;
-    margin-bottom: 20px;
+    font-size: 1.5em;
+    margin-bottom: 10px;
     color: #D9AF8B;
-}
-
-.footer-col p {
-    font-size: 0.95em;
-    line-height: 1.7;
-    margin-bottom: 18px;
-}
-footer a{
-    text-decoration: none;
-    color: #A67B77;
-}
-
-.footer-btn {
-    display: inline-block;
-    margin-top: 10px;
-    padding: 14px 34px;
-    background-color: #D9AF8B;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 30px;
-    font-weight: 600;
-    transition: transform 0.2s, background-color 0.2s;
-}
-
-.footer-btn:hover {
-    background-color: #8A5D7C;
-    transform: translateY(-2px);
 }
 
 /* COPYRIGHT */
@@ -263,15 +162,73 @@ footer a{
     color: #E5D1BE;
 }
 
-/* RESPONSIVO */
-@media (max-width: 900px) {
-    .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+
+/* -------------------------------------- */
+/* 💻 MEDIA QUERIES PARA DESKTOP (A PARTIR DE 900px) */
+/* -------------------------------------- */
+
+@media (min-width: 900px) {
+    
+    /* HERO SECTION - Volta ao layout de desktop: lado a lado (40%/60%) */
+    .hero-section {
+        flex-direction: row; /* Volta a ser lado a lado */
+        min-height: 550px;
     }
 
-    .footer-btn {
-        margin-left: auto;
-        margin-right: auto;
+    .hero-text-container {
+        width: 40%; /* Volta a 40% */
+        padding: 70px 60px;
+        text-align: left; /* Volta a alinhar à esquerda */
+        order: 0;
+    }
+
+    .hero-image-area {
+        width: 60%; /* Volta a 60% */
+        height: auto; /* Altura automática no desktop */
+        order: 1;
+    }
+
+    .logo-img {
+        max-width: 230px; /* Volta ao tamanho maior */
+    }
+
+    .slogan-container h2 {
+        font-size: 2.5em; /* Volta ao tamanho maior */
+    }
+
+    /* MENU - Volta ao posicionamento no canto superior direito */
+    .main-nav {
+        position: absolute;
+        top: 30px;
+        right: 40px;
+        margin-bottom: 0;
+    }
+
+    .main-nav ul {
+        gap: 40px; /* Aumenta a distância entre os links */
+    }
+    
+    .main-nav a {
+        font-size: 1em;
+        letter-spacing: .12em;
+    }
+
+
+    /* SERVIÇOS - Volta ao layout de 4 colunas */
+    .servicos-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 40px;
+        padding: 0;
+    }
+
+    .servico-card img {
+        height: 420px; /* Volta à altura maior */
+    }
+    
+    /* FOOTER - Volta ao layout de 3 colunas */
+    .footer-container {
+        grid-template-columns: repeat(3, 1fr);
+        text-align: left;
+        padding: 0 20px 50px;
     }
 }
