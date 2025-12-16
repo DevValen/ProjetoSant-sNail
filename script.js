@@ -19,7 +19,7 @@ cards.forEach(card => {
         modalValor.textContent = card.dataset.valor;
 
         modalWhatsapp.href =
-            `https://wa.me/5547991418036?text=${encodeURIComponent(card.dataset.msg)}`;
+            `https://wa.me/5547999316641?text=${encodeURIComponent(card.dataset.msg)}`;
 
         modal.classList.add('active');
     });
